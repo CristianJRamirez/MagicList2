@@ -1,8 +1,10 @@
 package a45858000w.magiclist2;
 
+import android.os.AsyncTask;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -44,9 +46,9 @@ public class MainActivityFragment extends Fragment {
 
         ListView listaCartas = (ListView) view.findViewById(R.id.listaCartas);
 
-        //cartas = new ArrayList<>();
+        cartas = new ArrayList<>();
 
-        String[] Ejemplos = {
+      String[] Ejemplos = {
             "Maestro Yi",
             "VI",
             "Ashe",
@@ -89,6 +91,23 @@ public class MainActivityFragment extends Fragment {
     }
 
        private void refresh() {
+          /* Api api = new Api();
+           //String result = api.getCartas("es");
+           String result = api.getCartas();
+           Log.d("DEBUG", result);*/
+           new RefreshDataTask();
+    }
+
+    private class RefreshDataTask extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected Void doInBackground(Void... voids) {
+            Api api = new Api();
+            String result = api.getCartas();
+
+            Log.d("DEBUG", result);
+
+            return null;
+        }
     }
     //endregion
 
