@@ -9,9 +9,9 @@
     tools:showIn="@layout/activity_main">
 
     <ListView
-            android:layout_width="384dp"
-            android:layout_height="455dp"
-            android:id="@+id/listaCartas"
+            android:layout_width="352dp"
+            android:layout_height="423dp"
+            android:id="@+id/lvPelis"
             android:layout_marginStart="16dp"
             app:layout_constraintLeft_toLeftOf="parent"
             android:layout_marginLeft="16dp"
@@ -21,6 +21,6 @@
             app:layout_constraintRight_toRightOf="parent"
             android:layout_marginRight="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="16dp" />
+              android:layout_marginBottom="16dp" />
 
 </android.support.constraint.ConstraintLayout>
