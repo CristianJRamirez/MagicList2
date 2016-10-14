@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -33,7 +34,19 @@ public class MainActivityFragment extends Fragment {
 
         ListView listaCartas = (ListView) view.findViewById(R.id.listaCartas);
 
-        cartas = new ArrayList<>();
+        //cartas = new ArrayList<>();
+
+        String[] Ejemplos = {
+            "Maestro Yi",
+            "VI",
+            "Ashe",
+            "Garen",
+            "Xerath",
+            "Ekko",
+            "Jhin"
+            };
+        cartas = new ArrayList<>(Arrays.asList(Ejemplos));
+
         adapter = new ArrayAdapter<>(
              getContext(),
              R.layout.cartas_layout,
