@@ -91,5 +91,5 @@ public class MainActivityFragment extends Fragment {
        private void refresh() {
     }
     //endregion
-    
+
 }
