@@ -11,7 +11,7 @@
     <ListView
             android:layout_width="352dp"
             android:layout_height="423dp"
-            android:id="@+id/lvPelis"
+            android:id="@+id/listaCartas"
             android:layout_marginStart="16dp"
             app:layout_constraintLeft_toLeftOf="parent"
             android:layout_marginLeft="16dp"
