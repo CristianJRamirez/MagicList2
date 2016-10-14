@@ -48,7 +48,7 @@ public class MainActivityFragment extends Fragment {
 
         cartas = new ArrayList<>();
 
-      String[] Ejemplos = {
+     /* String[] Ejemplos = {
             "Maestro Yi",
             "VI",
             "Ashe",
@@ -57,7 +57,7 @@ public class MainActivityFragment extends Fragment {
             "Ekko",
             "Jhin"
             };
-        cartas = new ArrayList<>(Arrays.asList(Ejemplos));
+        cartas = new ArrayList<>(Arrays.asList(Ejemplos));*/
 
         adapter = new ArrayAdapter<>(
              getContext(),
@@ -66,7 +66,6 @@ public class MainActivityFragment extends Fragment {
                 cartas
              );
         listaCartas.setAdapter(adapter);
-
 
         return view;
     }
@@ -91,11 +90,10 @@ public class MainActivityFragment extends Fragment {
     }
 
        private void refresh() {
-          /* Api api = new Api();
+           /*Api api = new Api();
            //String result = api.getCartas("es");
            String result = api.getCartas();
            Log.d("DEBUG", result);*/
-           new RefreshDataTask();
     }
 
     private class RefreshDataTask extends AsyncTask<Void, Void, Void> {
