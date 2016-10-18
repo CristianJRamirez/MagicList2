@@ -17,7 +17,7 @@ public class Api {
         Uri builtUri = Uri.parse(BASE_URL)
                 .buildUpon()
                 //.appendPath("vi")
-              //  .appendPath("cards")
+                //.appendPath("cards")
                 //.appendPath("box_office.json")
                // .appendQueryParameter("country", pais)//para buscar dentro de la api con algun paramentro en concreto
                 .build();

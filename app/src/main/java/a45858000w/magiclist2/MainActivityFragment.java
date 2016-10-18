@@ -90,11 +90,17 @@ public class MainActivityFragment extends Fragment {
     }
 
        private void refresh() {
+           /*
            Api api = new Api();
            //String result = api.getCartas("es");
            String result = api.getAllCartas();
            Log.d("DEBUG", result);
+           */
+           RefreshDataTask task = new RefreshDataTask();
+           task.execute();
     }
+
+
 
     private class RefreshDataTask extends AsyncTask<Void, Void, Void> {
         @Override
