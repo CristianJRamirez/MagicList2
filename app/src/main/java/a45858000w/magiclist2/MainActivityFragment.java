@@ -106,9 +106,9 @@ public class MainActivityFragment extends Fragment {
         @Override
         protected Void doInBackground(Void... voids) {
             Api api = new Api();
-            String result = api.getAllCartas();
+            ArrayList<Carta> result = api.getAllCartas();
 
-            Log.d("DEBUG", result);
+            Log.d("DEBUG", result.toString());
 
             return null;
         }

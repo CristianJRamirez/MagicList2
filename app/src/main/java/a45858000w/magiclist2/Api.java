@@ -5,7 +5,12 @@ package a45858000w.magiclist2;
  */
 import android.net.Uri;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Api {
     //http://api.magicthegathering.io/v1/cards?page=311
@@ -32,7 +37,7 @@ public class Api {
         return null;
 
 
-    } String getAllCartas(){
+    } ArrayList<Carta> getAllCartas(){
         Uri builtUri = Uri.parse(BASE_URL)
                 .buildUpon()
                 .build();
@@ -40,8 +45,31 @@ public class Api {
 
         try {
             String JsonResponse = HttpUtils.get(url);
-            return JsonResponse;
+            ArrayList<Carta> cartas =new ArrayList<>();
+
+            JSONObject data= new JSONObject(JsonResponse);
+            JSONArray jsonCartas = data.getJSONArray("cards");
+
+            for (int i = 0; i<jsonCartas.length() ; i++) {
+                Carta c= new Carta();
+                JSONObject object = jsonCartas.getJSONObject(i);
+
+                c.setName(object.getString("name"));
+                c.setManaCost(object.getString("manaCost"));
+                c.setType(object.getString("type"));
+                c.setRarity(object.getString("rarity"));
+                c.setText(object.getString("text"));
+                c.setPower(object.getString("power"));
+                c.setImageUrl(object.getString("imageUrl"));
+
+                cartas.add(c);
+            }
+
+
+            return cartas;
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
             e.printStackTrace();
         }
         return null;
