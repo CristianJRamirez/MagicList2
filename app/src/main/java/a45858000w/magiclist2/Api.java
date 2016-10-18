@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public class Api {
     //http://api.magicthegathering.io/v1/cards?page=311
     private final String BASE_URL = "http://api.magicthegathering.io/v1/cards";
+    private final String API_KEY = "9htuhtcb4ymusd73d4z6jxcj";
 
 
      String getCartas(String pais) { //para utilizar el parametro
@@ -25,6 +26,7 @@ public class Api {
                 //.appendPath("cards")
                 //.appendPath("box_office.json")
                // .appendQueryParameter("country", pais)//para buscar dentro de la api con algun paramentro en concreto
+                //.appendQueryParameter("apikey", API_KEY)
                 .build();
         String url = builtUri.toString();
 
