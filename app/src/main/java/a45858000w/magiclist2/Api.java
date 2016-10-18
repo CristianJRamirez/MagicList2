@@ -8,15 +8,16 @@ import android.net.Uri;
 import java.io.IOException;
 
 public class Api {
+    //http://api.magicthegathering.io/v1/cards?page=311
+    private final String BASE_URL = "http://api.magicthegathering.io/v1/cards";
 
-    private final String BASE_URL = "https://docs.magicthegathering.io/";
-//https://api.magicthegathering.io/v1/cards
+
   //  String getCartas(String pais) { //para utilizar el parametro
     String getCartas(){
         Uri builtUri = Uri.parse(BASE_URL)
                 .buildUpon()
-                .appendPath("vi")
-                .appendPath("cards")
+                //.appendPath("vi")
+              //  .appendPath("cards")
                 //.appendPath("box_office.json")
                // .appendQueryParameter("country", pais)//para buscar dentro de la api con algun paramentro en concreto
                 .build();
