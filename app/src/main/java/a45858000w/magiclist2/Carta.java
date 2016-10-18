@@ -12,6 +12,9 @@ public class Carta {
     private String rarity;
     private String text;
     private String power;
+    private String imageUrl;
+
+
 
     public String getName() {
         return name;
@@ -32,6 +35,8 @@ public class Carta {
     public String getType() {
         return type;
     }
+
+
 
     public void setType(String type) {
         this.type = type;
@@ -59,5 +64,26 @@ public class Carta {
 
     public void setPower(String power) {
         this.power = power;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    @Override
+    public String toString() {
+        return "Carta{" +
+                "name='" + name + '\'' +
+                ", manaCost='" + manaCost + '\'' +
+                ", type='" + type + '\'' +
+                ", rarity='" + rarity + '\'' +
+                ", text='" + text + '\'' +
+                ", power='" + power + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                '}';
     }
 }
