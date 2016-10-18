@@ -102,15 +102,22 @@ public class MainActivityFragment extends Fragment {
 
 
 
-    private class RefreshDataTask extends AsyncTask<Void, Void, Void> {
+    private class RefreshDataTask extends AsyncTask<Void, Void, ArrayList<Carta>> {
         @Override
-        protected Void doInBackground(Void... voids) {
+        protected ArrayList<Carta> doInBackground(Void... voids) {
             Api api = new Api();
             ArrayList<Carta> result = api.getAllCartas();
 
+
             Log.d("DEBUG", result.toString());
 
-            return null;
+
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<Carta> cartas) {
+            super.onPostExecute(cartas);
         }
     }
     //endregion
