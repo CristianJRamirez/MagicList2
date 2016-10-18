@@ -37,7 +37,10 @@ public class Api {
         return null;
 
 
-    } ArrayList<Carta> getAllCartas(){
+    }
+
+
+    ArrayList<Carta> getAllCartas(){
         Uri builtUri = Uri.parse(BASE_URL)
                 .buildUpon()
                 .build();
@@ -54,13 +57,28 @@ public class Api {
                 Carta c= new Carta();
                 JSONObject object = jsonCartas.getJSONObject(i);
 
-                c.setName(object.getString("name"));
-                c.setManaCost(object.getString("manaCost"));
-                c.setType(object.getString("type"));
-                c.setRarity(object.getString("rarity"));
-                c.setText(object.getString("text"));
-                c.setPower(object.getString("power"));
-                c.setImageUrl(object.getString("imageUrl"));
+                if (object.has("name")) {
+                    c.setName(object.getString("name"));
+                }
+                if (object.has("manaCost")) {
+                    c.setManaCost(object.getString("manaCost"));
+                }
+                if (object.has("type")) {
+                    c.setType(object.getString("type"));
+                }
+                if (object.has("rarity")) {
+                    c.setRarity(object.getString("rarity"));
+                }
+                if (object.has("text")) {
+                    c.setText(object.getString("text"));
+                }
+                if (object.has("power"))
+                {
+                    c.setPower(object.getString("power"));
+                }
+                if (object.has("imageUrl")) {
+                    c.setImageUrl(object.getString("imageUrl"));
+                }
 
                 cartas.add(c);
             }
