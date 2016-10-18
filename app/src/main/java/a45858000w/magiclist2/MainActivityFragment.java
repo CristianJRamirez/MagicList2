@@ -118,6 +118,10 @@ public class MainActivityFragment extends Fragment {
         @Override
         protected void onPostExecute(ArrayList<Carta> cartas) {
             super.onPostExecute(cartas);
+            adapter.clear();
+            for (Carta c : cartas) {
+                adapter.add(c.getName());
+            }
         }
     }
     //endregion
