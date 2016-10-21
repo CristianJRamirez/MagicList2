@@ -94,4 +94,12 @@ public class Api {
         }
         return null;
     }
+
+    public ArrayList<Carta> getPeliculesMesVistes(String pais) {
+        return null;
+    }
+
+    public ArrayList<Carta> getProximesEstrenes(String pais) {
+        return  null;
+    }
 }

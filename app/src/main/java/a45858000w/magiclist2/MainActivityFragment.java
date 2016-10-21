@@ -1,6 +1,9 @@
 package a45858000w.magiclist2;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -85,6 +88,8 @@ public class MainActivityFragment extends Fragment {
         int id = item.getItemId();
 
         if (id == R.id.actualizar) {
+            Intent i = new Intent(null,SettingsActivity.class);
+            startActivity(i);
             refresh();
             return true;
         }
@@ -107,12 +112,27 @@ public class MainActivityFragment extends Fragment {
     private class RefreshDataTask extends AsyncTask<Void, Void, ArrayList<Carta>> {
         @Override
         protected ArrayList<Carta> doInBackground(Void... voids) {
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+            String pais = preferences.getString("pais", "es");
+            String tipusConsulta = preferences.getString("rarity", "common");
             Api api = new Api();
-            ArrayList<Carta> result = api.getAllCartas();
+            //ArrayList<Carta> result = api.getAllCartas();
+//TODO implementar tantos metodos como posibilidades de rareza existen en la clase api y borrar los dos metodos existentes de pelis
 
+            ArrayList<Carta> result = null;
 
-            Log.d("DEBUG", result.toString());
+            if (tipusConsulta.equals("common")) {
+                 result = api.getPeliculesMesVistes(pais);
+            } else {
+                 result = api.getProximesEstrenes(pais);
+            }
+/*TODO acabar de implementar el metodo de colores, que se hara con : MultiSelectListPreference, mirarme como hacerlo y rellenar los archivos :
+            res/xml/pref_general.xml
+            mirar informacion en  : https://developer.android.com/reference/android/preference/MultiSelectListPreference.html*/
 
+            
+            //Log.d("DEBUG", result.toString());
+            Log.d("DEBUG", result != null ? result.toString() : null);
 
             return result;
         }
