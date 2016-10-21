@@ -5,5 +5,5 @@
         android:id="@+id/actualizar"
         android:orderInCategory="100"
         android:title="Actualizar"
-        app:showAsAction="never" />
+        app:showAsAction="always" />
 </menu>
