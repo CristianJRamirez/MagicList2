@@ -27,8 +27,11 @@ public class MainActivityFragment extends Fragment {
 
 
     //region VARIABLES
-    private ArrayList<String> cartas;
-    private ArrayAdapter<String> adapter;
+
+//   private ArrayList<String> cartas;
+ //   private ArrayAdapter<String> adapter;
+    private ArrayList<Carta> cartas;
+    private ArrayAdapter<Carta> adapter;
     //endregion
 
 
@@ -77,9 +80,12 @@ public class MainActivityFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.actualizar) {
-            Intent i = new Intent(null,SettingsActivity.class);
+        if (id == R.id.action_settings) {
+            Intent i = new Intent(getContext(), SettingsActivity.class);
             startActivity(i);
+            return true;
+        }
+        else if (id == R.id.actualizar) {
             refresh();
             return true;
         }
@@ -110,7 +116,7 @@ public class MainActivityFragment extends Fragment {
         protected ArrayList<Carta> doInBackground(Void... voids) {
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
             String color = preferences.getString("color", "white");
-            String rareza = preferences.getString("rarity", "common");
+            String rareza = preferences.getString("rarity", "uncommon");
             Api api = new Api();
             //ArrayList<Carta> result = api.getAllCartas();
 //TODO implementar tantos metodos como posibilidades de rareza existen en la clase api y borrar los dos metodos existentes de pelis
@@ -157,7 +163,8 @@ public class MainActivityFragment extends Fragment {
             super.onPostExecute(cartas);
             adapter.clear();
             for (Carta c : cartas) {
-                adapter.add(c.getName());
+                //adapter.add(c.getName());
+                adapter.add(c);
             }
         }
     }
