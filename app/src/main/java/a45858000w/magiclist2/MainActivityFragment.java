@@ -31,7 +31,8 @@ public class MainActivityFragment extends Fragment {
 //   private ArrayList<String> cartas;
  //   private ArrayAdapter<String> adapter;
     private ArrayList<Carta> cartas;
-    private ArrayAdapter<Carta> adapter;
+    //private ArrayAdapter<Carta> adapter;
+    private CartaAdapter adapter;
     //endregion
 
 
@@ -55,10 +56,10 @@ public class MainActivityFragment extends Fragment {
         cartas = new ArrayList<>();
 
 
-        adapter = new ArrayAdapter<>(
+        adapter = new CartaAdapter<>(
              getContext(),
              R.layout.cartas_layout,
-             R.id.Carta,
+            // R.id.Carta,
                 cartas
              );
         listaCartas.setAdapter(adapter);
