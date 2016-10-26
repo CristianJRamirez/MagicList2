@@ -8,21 +8,17 @@ android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/Image"
-        android:layout_width="92dp"
-        android:layout_height="0dp"
+        android:layout_width="61dp"
+        android:layout_height="64dp"
         android:layout_centerVertical="true"
         android:adjustViewBounds="true"
         android:maxHeight="70dp"
         android:scaleType="fitXY"
-        app:layout_constraintRight_toLeftOf="@+id/Carta"
         android:layout_marginStart="32dp"
-        android:layout_marginEnd="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginLeft="32dp"
-        android:layout_marginRight="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/Carta"
         app:layout_constraintTop_toTopOf="@+id/Carta"
-        app:layout_constraintHorizontal_bias="0.08"
         app:layout_constraintVertical_bias="0.0" />
 
 <TextView
@@ -31,17 +27,19 @@ android:layout_height="match_parent">
     android:layout_height="wrap_content"
     android:id="@+id/Carta"
     android:gravity="center_vertical"
-    android:layout_marginTop="16dp"
     app:layout_constraintTop_toTopOf="parent"
     android:minHeight="?android:attr/listPreferredItemHeight"
 
-    app:layout_constraintRight_toLeftOf="@+id/power" />
+    app:layout_constraintRight_toLeftOf="@+id/vertical"
+    android:layout_marginStart="8dp"
+    app:layout_constraintLeft_toRightOf="@+id/Image"
+    android:layout_marginLeft="8dp" />
 
 
     <TextView
         android:id="@+id/rarity"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="75dp"
+        android:layout_height="60dp"
         android:layout_alignLeft="@+id/Carta"
         android:layout_below="@+id/Carta"
         android:hint="91%"
@@ -51,20 +49,31 @@ android:layout_height="match_parent">
         android:layout_marginRight="8dp"
         app:layout_constraintTop_toTopOf="@+id/power"
         app:layout_constraintBottom_toBottomOf="@+id/power"
-        app:layout_constraintVertical_bias="1.0"
-        app:layout_constraintLeft_toRightOf="@+id/power" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/power"
         android:layout_height="0dp"
         android:layout_below="@+id/rarity"
         android:ellipsize="end"
-        android:hint="Christian Bale, Joseph-Gordon Levitt, Heath Ledger, Maggie Gylenhall"
+        android:hint="0"
         android:maxLines="1"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@+id/Carta"
         app:layout_constraintTop_toTopOf="@+id/Carta"
         app:layout_constraintVertical_bias="0.0"
         android:layout_width="50dp"
-        tools:layout_editor_absoluteX="212dp" />
+        app:layout_constraintRight_toLeftOf="@+id/rarity"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintLeft_toLeftOf="@+id/vertical" />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/vertical"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="194dp"
+        app:layout_constraintGuide_percent="0.5052083" />
 </android.support.constraint.ConstraintLayout>

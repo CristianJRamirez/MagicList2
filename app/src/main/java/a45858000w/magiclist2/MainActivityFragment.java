@@ -56,7 +56,7 @@ public class MainActivityFragment extends Fragment {
         cartas = new ArrayList<>();
 
 
-        adapter = new CartaAdapter<>(
+        adapter = new CartaAdapter(
              getContext(),
              R.layout.cartas_layout,
             // R.id.Carta,
