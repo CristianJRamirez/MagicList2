@@ -95,11 +95,26 @@ public class Api {
         return null;
     }
 
-    public ArrayList<Carta> getPeliculesMesVistes(String pais) {
-        return null;
+
+    public ArrayList<Carta> getCartasComunes(String color) {
+        return getAllCartas(); //return null;
     }
 
-    public ArrayList<Carta> getProximesEstrenes(String pais) {
-        return  null;
+    public ArrayList<Carta> getProximesNoComunes(String color) {
+        return getAllCartas();
     }
+
+    public ArrayList<Carta> getCartasRaras(String color) {
+        return getAllCartas();
+    }
+    public ArrayList<Carta> getCartasMisticas(String color) {
+        return getAllCartas();
+    }
+    public ArrayList<Carta> getCartasEspeciales(String color) {
+        return getAllCartas();
+    }
+    public ArrayList<Carta> getCartasBasicas(String color) {
+        return getAllCartas();
+    }
+
 }
