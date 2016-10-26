@@ -13,6 +13,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 
@@ -40,12 +42,13 @@ public class CartaAdapter extends ArrayAdapter<Carta> {
         TextView Carta = (TextView) convertView.findViewById(R.id.Carta);
         TextView Rareza = (TextView) convertView.findViewById(R.id.rarity);
         TextView Poder = (TextView) convertView.findViewById(R.id.power);
-        ImageView ivPosterImage = (ImageView) convertView.findViewById(R.id.Image);
+        ImageView Image = (ImageView) convertView.findViewById(R.id.Image);
 
         // Fiquem les dades dels objectes (provinents del JSON) en el layout
         Carta.setText(c.getName());
         Rareza.setText(c.getRarity());
         Poder.setText(c.getPower());
+        Glide.with(getContext()).load(c.getImageUrl()).into(Image);
 
         // Retornem la View replena per a mostrarla
         return convertView;
