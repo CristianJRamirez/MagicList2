@@ -18,12 +18,12 @@
 
     <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
     <string-array name="pref_opcions_consulta_list_titles">
-        <item>Common</item>
-        <item>Uncommon</item>
-        <item>Rare</item>
-        <item>Mythic Rare</item>
-        <item>Special</item>
-        <item>Basic Land</item>
+        <item>Comun</item>
+        <item>No comun</item>
+        <item>Rara</item>
+        <item>Mistica Rara</item>
+        <item>Especial</item>
+        <item>Basica de Tierra</item>
 
     </string-array>
     <string-array name="pref_opcions_consulta_list_values">
