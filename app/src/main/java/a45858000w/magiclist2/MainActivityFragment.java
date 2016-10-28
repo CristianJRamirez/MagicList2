@@ -116,38 +116,20 @@ public class MainActivityFragment extends Fragment {
         @Override
         protected ArrayList<Carta> doInBackground(Void... voids) {
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-            String color = preferences.getString("color", "white");
-            String rareza = preferences.getString("rarity", "uncommon");
+            String color = preferences.getString("colors", "White");
+            String rareza = preferences.getString("rarity", "Todas");
             Api api = new Api();
-            //ArrayList<Carta> result = api.getAllCartas();
-//TODO implementar tantos metodos como posibilidades de rareza existen en la clase api y borrar los dos metodos existentes de pelis
-//https://github.com/lawer/RottenTomatoesClient2016/commit/332f425c4b6df1d3a60dc9123fd4ef9e16801a65
+
 
 
             ArrayList<Carta> result = null;
-
-            if (rareza.equals("Common")) {
-                 result = api.getCartasComunes(color);
-            }
-            else if (rareza.equals("Uncommon")){
-                 result = api.getProximesNoComunes(color);
-            }
-            else if (rareza.equals("Rare")){
-                result = api.getCartasRaras(color);
-            }
-            else if (rareza.equals("Mythic Rare")){
-                result = api.getCartasMisticas(color);
-            }
-            else if (rareza.equals("Special")){
-                result = api.getCartasEspeciales(color);
-            }
-            else if (rareza.equals("Basic Land")){
-                result = api.getCartasBasicas(color);
-            }
-            else {
+            if (rareza.equalsIgnoreCase("Todas"))
+            {
                 result = api.getAllCartas();
             }
-
+            else {
+                result = api.getCartasRareza(rareza, color);
+            }
 /*TODO acabar de implementar el metodo de colores, que se hara con : MultiSelectListPreference, mirarme como hacerlo y rellenar los archivos :
             res/xml/pref_general.xml
             mirar informacion en  : https://developer.android.com/reference/android/preference/MultiSelectListPreference.html*/

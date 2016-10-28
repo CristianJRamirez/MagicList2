@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 
 import java.util.List;
+import java.util.Set;
 
 
 public class CartaAdapter extends ArrayAdapter<Carta> {

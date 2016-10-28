@@ -4,11 +4,11 @@
         android:capitalize="words"
         android:defaultValue="white"
         android:inputType="textCapWords"
-        android:key="color"
+        android:key="colors"
         android:maxLines="1"
         android:selectAllOnFocus="true"
         android:singleLine="true"
-        android:title="color" />
+        android:title="colors" />
 
 
     <!-- NOTE: EditTextPreference accepts EditText attributes. -->

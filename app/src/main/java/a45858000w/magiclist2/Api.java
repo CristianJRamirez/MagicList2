@@ -4,6 +4,7 @@ package a45858000w.magiclist2;
  * Created by 45858000w on 14/10/16.
  */
 import android.net.Uri;
+import android.support.annotation.Nullable;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -14,7 +15,7 @@ import java.util.ArrayList;
 
 public class Api {
     //http://api.magicthegathering.io/v1/cards?page=311
-    private final String BASE_URL = "http://api.magicthegathering.io/v1/cards";
+
     private final String API_KEY = "9htuhtcb4ymusd73d4z6jxcj";
 
 
@@ -48,6 +49,12 @@ public class Api {
                 .build();
         String url = builtUri.toString();
 
+        return getDatosCartas(url);
+    }
+
+    //Devuelve un arrayList de Cartas con el url
+    @Nullable
+    private ArrayList<Carta> getDatosCartas(String url) {
         try {
             String JsonResponse = HttpUtils.get(url);
             ArrayList<Carta> cartas =new ArrayList<>();
@@ -81,6 +88,10 @@ public class Api {
                 if (object.has("imageUrl")) {
                     c.setImageUrl(object.getString("imageUrl"));
                 }
+                if (object.has("colors"))
+                {
+                    c.setColor(object.getString("colors"));
+                }
 
                 cartas.add(c);
             }
@@ -95,26 +106,41 @@ public class Api {
         return null;
     }
 
+    private final String BASE_URL = "http://api.magicthegathering.io/v1/cards/";
+    private final String BASE_URL2 = "http://api.magicthegathering.io";
 
-    public ArrayList<Carta> getCartasComunes(String color) {
-        return getAllCartas(); //return null;
-    }
+    public ArrayList<Carta> getCartasRareza(String rareza,String color) {
 
-    public ArrayList<Carta> getProximesNoComunes(String color) {
-        return getAllCartas();
-    }
 
-    public ArrayList<Carta> getCartasRaras(String color) {
-        return getAllCartas();
-    }
-    public ArrayList<Carta> getCartasMisticas(String color) {
-        return getAllCartas();
-    }
-    public ArrayList<Carta> getCartasEspeciales(String color) {
-        return getAllCartas();
-    }
-    public ArrayList<Carta> getCartasBasicas(String color) {
-        return getAllCartas();
+        Uri builtUri = Uri.parse(BASE_URL2)
+                .buildUpon()
+                .appendPath("v1")
+                .appendPath("cards")
+                //.appendPath("box_office.json")
+                // .appendQueryParameter("rarity", "Rare")//para buscar dentro de la api con algun paramentro en concreto
+                .appendQueryParameter("rarity", rareza)//para buscar dentro de la api con algun paramentro en concreto,
+                .appendQueryParameter("colors", color)//para buscar dentro de la api con algun paramentro en concreto
+                .build();
+        String url = builtUri.toString();
+        return getDatosCartas(url); //return null;
     }
 
+
+
+    /*
+    Get cards from Khans of Tarkir that have the colors red, white and blue
+    "https://api.magicthegathering.io/v1/cards?set=ktk&colors=red,white,blue"
+
+    Uso avanzado
+
+    Los siguientes campos permiten que los modificadores gt (mayor que), GTE (mayor que o igual a),
+                    LT (menor que), y LTE (menos de o igual a) a los usados en el parámetro url:
+     poder
+     tenacidad
+     lealtad
+     CMC
+ "https://api.magicthegathering.io/v1/cards?power=gt3&cmc=lte6"
+
+
+*/
 }

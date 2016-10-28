@@ -1,5 +1,7 @@
 package a45858000w.magiclist2;
 
+import java.util.Set;
+
 /**
  * Created by 45858000w on 14/10/16.
  */
@@ -13,6 +15,7 @@ public class Carta {
     private String text;
     private String power;
     private String imageUrl;
+    private String Colors;
 
 
 
@@ -74,6 +77,15 @@ public class Carta {
         this.imageUrl = imageUrl;
     }
 
+
+    public String getColor() {
+        return Colors;
+    }
+
+    public void setColor(String colors) {
+        Colors = colors;
+    }
+
     @Override
     public String toString() {
         return "Carta{" +
@@ -84,6 +96,7 @@ public class Carta {
                 ", text='" + text + '\'' +
                 ", power='" + power + '\'' +
                 ", imageUrl='" + imageUrl + '\'' +
+                ", colors=" + Colors +
                 '}';
     }
 }

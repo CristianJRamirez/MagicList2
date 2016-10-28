@@ -18,6 +18,7 @@
 
     <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
     <string-array name="pref_opcions_consulta_list_titles">
+        <item>Todas</item>
         <item>Comun</item>
         <item>No comun</item>
         <item>Rara</item>
@@ -27,6 +28,7 @@
 
     </string-array>
     <string-array name="pref_opcions_consulta_list_values">
+        <item>Todas</item>
         <item>Common</item>
         <item>Uncommon</item>
         <item>Rare</item>
