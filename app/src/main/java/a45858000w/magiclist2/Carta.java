@@ -1,12 +1,13 @@
 package a45858000w.magiclist2;
 
+import java.io.Serializable;
 import java.util.Set;
 
 /**
  * Created by 45858000w on 14/10/16.
  */
 
-public class Carta {
+public class Carta  implements Serializable {
 
     private String name;
     private String manaCost;
