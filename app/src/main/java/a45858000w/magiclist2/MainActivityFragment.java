@@ -67,6 +67,7 @@ public class MainActivityFragment extends Fragment {
 
         listaCartas.setOnItemClickListener(new AdapterView.OnItemClickListener() {@Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            Carta carta = (Carta) adapterView.getItemAtPosition(i);
         }
          });
 
