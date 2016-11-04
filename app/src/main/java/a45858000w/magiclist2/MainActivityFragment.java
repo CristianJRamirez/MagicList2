@@ -71,6 +71,7 @@ public class MainActivityFragment extends Fragment {
 
             Intent intent = new Intent(getContext(), CartaDetalles.class);
             intent.putExtra("carta", carta);
+            startActivity(intent);
         }
          });
 
