@@ -1,92 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".CartaDetallesFragment">
+<layout>
 
-    <ImageView
-        android:id="@+id/ivPosterImage"
-        android:layout_width="133dp"
-        android:layout_height="169dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:adjustViewBounds="true"
-        android:maxHeight="160dp"
-        android:scaleType="fitXY"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context=".CartaDetallesFragment">
+
+        <ImageView
+            android:id="@+id/ivPosterImage"
+            android:layout_width="133dp"
+            android:layout_height="169dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:adjustViewBounds="true"
+            android:maxHeight="160dp"
+            android:scaleType="fitXY"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-    <TextView
-        android:id="@+id/cartaTitulo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="Carta"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toRightOf="@+id/ivPosterImage"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/cartaTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Carta"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toRightOf="@+id/ivPosterImage"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/cartaPower"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Poder = 5"
-        android:textSize="14sp"
-        app:layout_constraintLeft_toLeftOf="@+id/cartaTitulo"
-        app:layout_constraintTop_toBottomOf="@+id/cartaTitulo" />
+        <TextView
+            android:id="@+id/cartaPower"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Poder = 5"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toLeftOf="@+id/cartaTitulo"
+            app:layout_constraintTop_toBottomOf="@+id/cartaTitulo" />
 
-    <TextView
-        android:id="@+id/cartaMana"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Coste de mana = 5"
-        android:textSize="14sp"
-        app:layout_constraintLeft_toLeftOf="@+id/cartaPower"
-        app:layout_constraintTop_toBottomOf="@+id/cartaPower" />
+        <TextView
+            android:id="@+id/cartaMana"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Coste de mana = 5"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toLeftOf="@+id/cartaPower"
+            app:layout_constraintTop_toBottomOf="@+id/cartaPower" />
 
-    <TextView
-        android:id="@+id/cartaRarity"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="8dp"
-        android:text="Es poco comun"
-        app:layout_constraintLeft_toLeftOf="@+id/ivPosterImage"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivPosterImage" />
+        <TextView
+            android:id="@+id/cartaRarity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="8dp"
+            android:text="Es poco comun"
+            app:layout_constraintLeft_toLeftOf="@+id/ivPosterImage"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivPosterImage" />
 
-    <TextView
-        android:id="@+id/cartaType"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="El tipo de la carta "
-        app:layout_constraintLeft_toLeftOf="@+id/cartaRarity"
-        app:layout_constraintRight_toRightOf="@+id/cartaRarity"
-        app:layout_constraintTop_toBottomOf="@+id/cartaRarity" />
+        <TextView
+            android:id="@+id/cartaType"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="El tipo de la carta "
+            app:layout_constraintLeft_toLeftOf="@+id/cartaRarity"
+            app:layout_constraintRight_toRightOf="@+id/cartaRarity"
+            app:layout_constraintTop_toBottomOf="@+id/cartaRarity" />
 
-    <TextView
-        android:id="@+id/cartaText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="El texto de la carta "
-        app:layout_constraintLeft_toLeftOf="@+id/cartaType"
-        app:layout_constraintRight_toRightOf="@+id/cartaType"
-        app:layout_constraintTop_toBottomOf="@+id/cartaType" />
+        <TextView
+            android:id="@+id/cartaText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="El texto de la carta "
+            app:layout_constraintLeft_toLeftOf="@+id/cartaType"
+            app:layout_constraintRight_toRightOf="@+id/cartaType"
+            app:layout_constraintTop_toBottomOf="@+id/cartaType" />
 
-</android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
+</layout>
