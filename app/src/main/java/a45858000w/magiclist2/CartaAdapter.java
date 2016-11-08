@@ -53,7 +53,7 @@ public class CartaAdapter extends ArrayAdapter<Carta> {
         // Fiquem les dades dels objectes (provinents del JSON) en el layout
         binding.Carta.setText(c.getName());
         binding.rarity.setText(c.getRarity());
-        binding.power.setText("Poder : " +c.getPower() + "%");
+        binding.power.setText("Poder:" +c.getPower());
         Glide.with(getContext()).load(c.getImageUrl()).into(binding.Image);
 
 
