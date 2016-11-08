@@ -32,7 +32,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="Carta"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintLeft_toRightOf="@+id/ivPosterImage"
         app:layout_constraintTop_toTopOf="parent" />
@@ -78,5 +78,15 @@
         app:layout_constraintLeft_toLeftOf="@+id/cartaRarity"
         app:layout_constraintRight_toRightOf="@+id/cartaRarity"
         app:layout_constraintTop_toBottomOf="@+id/cartaRarity" />
+
+    <TextView
+        android:id="@+id/cartaText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="El texto de la carta "
+        app:layout_constraintLeft_toLeftOf="@+id/cartaType"
+        app:layout_constraintRight_toRightOf="@+id/cartaType"
+        app:layout_constraintTop_toBottomOf="@+id/cartaType" />
 
 </android.support.constraint.ConstraintLayout>

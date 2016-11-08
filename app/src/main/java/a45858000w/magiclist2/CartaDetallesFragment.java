@@ -62,8 +62,10 @@ public class CartaDetallesFragment extends Fragment {
 
 
         cartaTitulo.setText(carta.getName() );
-        cartaPower.setText(
-               Html.fromHtml("<b>Poder :</b> " + carta.getPower() + "%"));
+        cartaPower.setText(Html.fromHtml("<b>Poder :</b> " + carta.getPower() + "%"));
+        cartaMana.setText(Html.fromHtml("<b>Coste de Mana :</b> " + carta.getManaCost()));
+        cartaRarity.setText(Html.fromHtml("<b>Rareza :</b> " + carta.getRarity()));
+        cartaType.setText(Html.fromHtml("<b>Tipo :</b> " + carta.getType()));
         cartaText.setText(Html.fromHtml("<b>Texto :</b> " + carta.getText()));
         Glide.with(getContext()).load(carta.getImageUrl()).into(ivPosterImage);
     }
