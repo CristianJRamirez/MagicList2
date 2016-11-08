@@ -2,6 +2,7 @@ package a45858000w.magiclist2;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.databinding.DataBindingUtil;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
@@ -20,6 +21,8 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import a45858000w.magiclist2.databinding.FragmentMainBinding;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -50,9 +53,11 @@ public class MainActivityFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_main, container, false);
 
-        ListView listaCartas = (ListView) view.findViewById(R.id.listaCartas);
+
+        FragmentMainBinding binding = DataBindingUtil.inflate(
+                        inflater, R.layout.fragment_main, container, false);
+        View view = binding.getRoot();
 
         cartas = new ArrayList<>();
 
@@ -65,9 +70,9 @@ public class MainActivityFragment extends Fragment {
              );
 
 
-        listaCartas.setAdapter(adapter);
+        binding.listaCartas.setAdapter(adapter);
 
-        listaCartas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        binding.listaCartas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             Carta carta = (Carta) adapterView.getItemAtPosition(i);

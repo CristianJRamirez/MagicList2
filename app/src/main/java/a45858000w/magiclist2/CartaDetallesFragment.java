@@ -1,6 +1,7 @@
 package a45858000w.magiclist2;
 
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.text.Html;
@@ -12,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+
+import a45858000w.magiclist2.databinding.FragmentCartaDetallesBinding;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -26,6 +29,7 @@ public class CartaDetallesFragment extends Fragment {
     private TextView cartaRarity;
     private TextView cartaType;
     private TextView cartaText;
+    private FragmentCartaDetallesBinding binding;
 
     public CartaDetallesFragment() {
     }
@@ -34,7 +38,12 @@ public class CartaDetallesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        view = inflater.inflate(R.layout.fragment_carta_detalles, container, false);
+
+
+        FragmentCartaDetallesBinding
+        binding = DataBindingUtil.inflate(
+                        inflater, R.layout.fragment_carta_detalles, container, false);
+        View view = binding.getRoot();
 
     Intent i = getActivity().getIntent();
 
@@ -52,21 +61,15 @@ public class CartaDetallesFragment extends Fragment {
     private void updateUi(Carta carta) {
         Log.d("CARTA", carta.toString());
 
-        ivPosterImage = (ImageView) view.findViewById(R.id.ivPosterImage);
-        cartaTitulo = (TextView) view.findViewById(R.id.cartaTitulo);
-        cartaPower = (TextView) view.findViewById(R.id.cartaPower);
-        cartaMana = (TextView) view.findViewById(R.id.cartaMana);
-        cartaRarity = (TextView) view.findViewById(R.id.cartaRarity);
-        cartaType = (TextView) view.findViewById(R.id.cartaType);
-        cartaText = (TextView) view.findViewById(R.id.cartaText);
 
 
-        cartaTitulo.setText(carta.getName() );
-        cartaPower.setText(Html.fromHtml("<b>Poder :</b> " + carta.getPower() + "%"));
+
+        binding.cartaTitulo.setText(carta.getName());
+        binding.cartaPower.setText(Html.fromHtml("<b>Poder :</b> " + carta.getPower() + "%"));
         cartaMana.setText(Html.fromHtml("<b>Coste de Mana :</b> " + carta.getManaCost()));
-        cartaRarity.setText(Html.fromHtml("<b>Rareza :</b> " + carta.getRarity()));
-        cartaType.setText(Html.fromHtml("<b>Tipo :</b> " + carta.getType()));
-        cartaText.setText(Html.fromHtml("<b>Texto :</b> " + carta.getText()));
-        Glide.with(getContext()).load(carta.getImageUrl()).into(ivPosterImage);
+        binding.cartaRarity.setText(Html.fromHtml("<b>Rareza :</b> " + carta.getRarity()));
+        binding.cartaType.setText(Html.fromHtml("<b>Tipo :</b> " + carta.getType()));
+        binding.cartaText.setText(Html.fromHtml("<b>Texto :</b> " + carta.getText()));
+        Glide.with(getContext()).load(carta.getImageUrl()).into(binding.ivPosterImage);
     }
 }
