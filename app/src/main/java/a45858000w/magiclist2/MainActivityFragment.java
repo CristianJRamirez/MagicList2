@@ -68,7 +68,8 @@ public class MainActivityFragment extends Fragment {
             // R.id.Carta,
                 cartas
              );
-
+//TODO : commit -> Millores en el client
+   //     https://github.com/lawer/RottenTomatoesClient2016/commit/2313ff67a86cff0db3febb18753bc79f8c178a08
 
         binding.listaCartas.setAdapter(adapter);
 
