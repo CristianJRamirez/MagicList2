@@ -5,6 +5,7 @@ package a45858000w.magiclist2;
  */
 
 import android.content.Context;
+import android.databinding.DataBindingUtil;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,8 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 import java.util.Set;
+
+import a45858000w.magiclist2.databinding.CartasLayoutBinding;
 
 
 public class CartaAdapter extends ArrayAdapter<Carta> {
@@ -32,26 +35,30 @@ public class CartaAdapter extends ArrayAdapter<Carta> {
         // Obtenim l'objecte en la possició corresponent
         Carta c  = getItem(position);
         Log.w("XXXX", c.toString());
+
+        CartasLayoutBinding binding = null;
+
         // Mirem a veure si la View s'està reusant, si no es així "inflem" la View
         // https://github.com/codepath/android_guides/wiki/Using-an-ArrayAdapter-with-ListView#row-view-recycling
         if (convertView == null) {
             LayoutInflater inflater = LayoutInflater.from(getContext());
-            convertView = inflater.inflate(R.layout.cartas_layout, parent, false);
+            binding = DataBindingUtil.inflate(inflater, R.layout.cartas_layout, parent, false);
+            }
+        else {
+                binding = DataBindingUtil.getBinding(convertView);
         }
 
-        // Unim el codi en les Views del Layout
-        TextView Carta = (TextView) convertView.findViewById(R.id.Carta);
-        TextView Rareza = (TextView) convertView.findViewById(R.id.rarity);
-        TextView Poder = (TextView) convertView.findViewById(R.id.power);
-        ImageView Image = (ImageView) convertView.findViewById(R.id.Image);
+
 
         // Fiquem les dades dels objectes (provinents del JSON) en el layout
-        Carta.setText(c.getName());
-        Rareza.setText(c.getRarity());
-        Poder.setText(c.getPower());
-        Glide.with(getContext()).load(c.getImageUrl()).into(Image);
+        binding.Carta.setText(c.getName());
+        binding.rarity.setText(c.getRarity());
+        binding.power.setText("Poder : " +c.getPower() + "%");
+        Glide.with(getContext()).load(c.getImageUrl()).into(binding.Image);
+
+
 
         // Retornem la View replena per a mostrarla
-        return convertView;
+        return binding.getRoot();
     }
 }
