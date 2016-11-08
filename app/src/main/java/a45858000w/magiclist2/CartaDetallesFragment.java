@@ -25,6 +25,7 @@ public class CartaDetallesFragment extends Fragment {
     private TextView cartaMana;
     private TextView cartaRarity;
     private TextView cartaType;
+    private TextView cartaText;
 
     public CartaDetallesFragment() {
     }
@@ -57,12 +58,13 @@ public class CartaDetallesFragment extends Fragment {
         cartaMana = (TextView) view.findViewById(R.id.cartaMana);
         cartaRarity = (TextView) view.findViewById(R.id.cartaRarity);
         cartaType = (TextView) view.findViewById(R.id.cartaType);
+        cartaText = (TextView) view.findViewById(R.id.cartaText);
 
 
         cartaTitulo.setText(carta.getName() );
         cartaPower.setText(
-               Html.fromHtml("<b>Critics Score:</b> " + carta.getPower() + "%"));
-        cartaType.setText(Html.fromHtml("<b>Synopsis:</b> " + carta.getType()));
+               Html.fromHtml("<b>Poder :</b> " + carta.getPower() + "%"));
+        cartaText.setText(Html.fromHtml("<b>Texto :</b> " + carta.getText()));
         Glide.with(getContext()).load(carta.getImageUrl()).into(ivPosterImage);
     }
 }
