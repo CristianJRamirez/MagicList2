@@ -16,6 +16,8 @@ import java.util.ArrayList;
 public class Api {
     //http://api.magicthegathering.io/v1/cards?page=311
 
+    private final String BASE_URL = "http://api.magicthegathering.io/v1/cards/";
+    private final String BASE_URL2 = "http://api.magicthegathering.io";
     private final String API_KEY = "9htuhtcb4ymusd73d4z6jxcj";
 
 
@@ -106,8 +108,7 @@ public class Api {
         return null;
     }
 
-    private final String BASE_URL = "http://api.magicthegathering.io/v1/cards/";
-    private final String BASE_URL2 = "http://api.magicthegathering.io";
+
 
     public ArrayList<Carta> getCartasRareza(String rareza,String color) {
 
@@ -127,20 +128,6 @@ public class Api {
 
 
 
-    /*
-    Get cards from Khans of Tarkir that have the colors red, white and blue
-    "https://api.magicthegathering.io/v1/cards?set=ktk&colors=red,white,blue"
-
-    Uso avanzado
-
-    Los siguientes campos permiten que los modificadores gt (mayor que), GTE (mayor que o igual a),
-                    LT (menor que), y LTE (menos de o igual a) a los usados en el parámetro url:
-     poder
-     tenacidad
-     lealtad
-     CMC
- "https://api.magicthegathering.io/v1/cards?power=gt3&cmc=lte6"
 
 
-*/
 }
