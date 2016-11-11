@@ -138,17 +138,17 @@ public class MainActivityFragment extends Fragment {
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
             String color = preferences.getString("colors", "White");
             String rareza = preferences.getString("rarity", "Todas");
-            Api api = new Api();
+
 
 
 
             ArrayList<Carta> result = null;
             if (rareza.equalsIgnoreCase("Todas"))
             {
-                result = api.getAllCartas();
+                result = Api.getAllCartas();
             }
             else {
-                result = api.getCartasRareza(rareza, color);
+                result = Api.getCartasRareza(rareza, color);
             }
 /*TODO acabar de implementar el metodo de colores, que se hara con : MultiSelectListPreference, mirarme como hacerlo y rellenar los archivos :
             res/xml/pref_general.xml
