@@ -158,9 +158,7 @@ public class MainActivityFragment extends Fragment {
             //Log.d("DEBUG", result.toString());
             Log.d("DEBUG", result != null ? result.toString() : null);
 
-            UriHelper helper = UriHelper.with(CartaContentProvider.AUTHORITY);
-            Uri cartaUri = helper.getUri(Carta.class);
-            cupboard().withContext(getContext()).put(cartaUri, Carta.class, result);
+            DataManager.saveCartas(result, getContext());
 
             return null;
         }
