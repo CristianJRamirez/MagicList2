@@ -25,4 +25,8 @@ public class DataManager {
     static void saveCartas(ArrayList<Carta> cartas, Context context) {
         cupboard().withContext(context).put(CARTA_URI, Carta.class, cartas);
     }
+
+    static void deleteCartas(Context context) {
+            cupboard().withContext(context).delete(CARTA_URI, "_id > ?", "1");
+        }
 }

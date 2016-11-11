@@ -158,6 +158,8 @@ public class MainActivityFragment extends Fragment {
             //Log.d("DEBUG", result.toString());
             Log.d("DEBUG", result != null ? result.toString() : null);
 
+
+            DataManager.deleteCartas(getContext());
             DataManager.saveCartas(result, getContext());
 
             return null;
