@@ -9,6 +9,7 @@ import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.widget.CursorAdapter;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -40,7 +41,7 @@ public class MainActivityFragment extends Fragment {
  //   private ArrayAdapter<String> adapter;
     private ArrayList<Carta> cartas;
     //private ArrayAdapter<Carta> adapter;
-    private CartaAdapter adapter;
+    private CartasCursorAdapter adapter;
     //endregion
 
 
@@ -66,13 +67,11 @@ public class MainActivityFragment extends Fragment {
         cartas = new ArrayList<>();
 
 
-        adapter = new CartaAdapter(
-             getContext(),
-             R.layout.cartas_layout,
-            // R.id.Carta,
-                cartas
-             );
-//TODO : commit -> Millores en el client
+
+        adapter = new CartasCursorAdapter(getContext(), Carta.class);
+
+
+        //TODO : commit -> Millores en el client
    //     https://github.com/lawer/RottenTomatoesClient2016/commit/2313ff67a86cff0db3febb18753bc79f8c178a08
 
         binding.listaCartas.setAdapter(adapter);
