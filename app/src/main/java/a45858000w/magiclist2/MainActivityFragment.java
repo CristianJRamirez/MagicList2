@@ -3,6 +3,7 @@ package a45858000w.magiclist2;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
@@ -23,6 +24,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import a45858000w.magiclist2.databinding.FragmentMainBinding;
+import nl.littlerobots.cupboard.tools.provider.UriHelper;
+
+import static nl.qbusict.cupboard.CupboardFactory.cupboard;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -132,22 +136,18 @@ public class MainActivityFragment extends Fragment {
 
 
 
-    private class RefreshDataTask extends AsyncTask<Void, Void, ArrayList<Carta>> {
+    private class RefreshDataTask extends AsyncTask<Void, Void,Void> {
         @Override
-        protected ArrayList<Carta> doInBackground(Void... voids) {
+        protected Void doInBackground(Void... voids) {
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
             String color = preferences.getString("colors", "White");
             String rareza = preferences.getString("rarity", "Todas");
 
 
-
-
             ArrayList<Carta> result = null;
-            if (rareza.equalsIgnoreCase("Todas"))
-            {
+            if (rareza.equalsIgnoreCase("Todas")) {
                 result = Api.getAllCartas();
-            }
-            else {
+            } else {
                 result = Api.getCartasRareza(rareza, color);
             }
 /*TODO acabar de implementar el metodo de colores, que se hara con : MultiSelectListPreference, mirarme como hacerlo y rellenar los archivos :
@@ -158,17 +158,11 @@ public class MainActivityFragment extends Fragment {
             //Log.d("DEBUG", result.toString());
             Log.d("DEBUG", result != null ? result.toString() : null);
 
-            return result;
-        }
+            UriHelper helper = UriHelper.with(CartaContentProvider.AUTHORITY);
+            Uri cartaUri = helper.getUri(Carta.class);
+            cupboard().withContext(getContext()).put(cartaUri, Carta.class, result);
 
-        @Override
-        protected void onPostExecute(ArrayList<Carta> cartas) {
-            super.onPostExecute(cartas);
-            adapter.clear();
-            for (Carta c : cartas) {
-                //adapter.add(c.getName());
-                adapter.add(c);
-            }
+            return null;
         }
     }
     //endregion
