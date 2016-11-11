@@ -27,6 +27,11 @@
             android:name=".CartaDetalles"
             android:label="@string/title_activity_carta_detalles"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <provider
+            android:name=".CartaContentProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false" />
     </application>
 
 </manifest>
