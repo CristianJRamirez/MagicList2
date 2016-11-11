@@ -1,5 +1,6 @@
 package a45858000w.magiclist2;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -35,7 +36,7 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
 
 //   private ArrayList<String> cartas;
  //   private ArrayAdapter<String> adapter;
-
+    private ProgressDialog dialog;
     //private ArrayAdapter<Carta> adapter;
     private CartasCursorAdapter adapter;
     //endregion
@@ -64,6 +65,8 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
 
 
         adapter = new CartasCursorAdapter(getContext(), Carta.class);
+        dialog = new ProgressDialog(getContext());
+        dialog.setMessage("Loading...");
 
 
         //TODO : commit -> Millores en el client
@@ -116,7 +119,7 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
     @Override
     public void onStart() {
         super.onStart();
-        refresh();
+
     }
 
     private void refresh() {
@@ -149,6 +152,12 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
 
     private class RefreshDataTask extends AsyncTask<Void, Void,Void> {
         @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            dialog.show();
+        }
+
+        @Override
         protected Void doInBackground(Void... voids) {
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
             String color = preferences.getString("colors", "White");
@@ -174,6 +183,12 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
             DataManager.saveCartas(result, getContext());
 
             return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            dialog.dismiss();
         }
     }
     //endregion
