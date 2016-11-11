@@ -38,8 +38,8 @@ public class CartasCursorAdapter extends CupboardCursorAdapter<Carta> {
         CartasLayoutBinding binding = DataBindingUtil.getBinding(view);
 
         binding.Carta.setText(model.getName());
-        binding.power.setText(model.getPower());
-        binding.rarity.setText(model.getRarity());
+        binding.power.setText("Poder: " +model.getPower());
+        binding.rarity.setText("Rareza : " +model.getRarity());
         Glide.with(context).load(model.getImageUrl()).into(binding.Image);
     }
 }
