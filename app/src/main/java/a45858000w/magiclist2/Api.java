@@ -16,12 +16,12 @@ import java.util.ArrayList;
 public class Api {
     //http://api.magicthegathering.io/v1/cards?page=311
 
-    private final String BASE_URL = "http://api.magicthegathering.io/v1/cards/";
-    private final String BASE_URL2 = "http://api.magicthegathering.io";
+    private static final String BASE_URL = "http://api.magicthegathering.io/v1/cards/";
+    private static final String BASE_URL2 = "http://api.magicthegathering.io";
     private final String API_KEY = "9htuhtcb4ymusd73d4z6jxcj";
 
 
-     String getCartas(String pais) { //para utilizar el parametro
+     static String getCartas(String pais) { //para utilizar el parametro
 
         Uri builtUri = Uri.parse(BASE_URL)
                 .buildUpon()
@@ -45,7 +45,7 @@ public class Api {
     }
 
 
-    ArrayList<Carta> getAllCartas(){
+    static ArrayList<Carta> getAllCartas(){
         Uri builtUri = Uri.parse(BASE_URL)
                 .buildUpon()
                 .build();
@@ -56,7 +56,7 @@ public class Api {
 
     //Devuelve un arrayList de Cartas con el url
     @Nullable
-    private ArrayList<Carta> getDatosCartas(String url) {
+    private static ArrayList<Carta> getDatosCartas(String url) {
         try {
             String JsonResponse = HttpUtils.get(url);
             ArrayList<Carta> cartas =new ArrayList<>();
@@ -110,7 +110,7 @@ public class Api {
 
 
 
-    public ArrayList<Carta> getCartasRareza(String rareza,String color) {
+    public static ArrayList<Carta> getCartasRareza(String rareza, String color) {
 
 
         Uri builtUri = Uri.parse(BASE_URL2)
