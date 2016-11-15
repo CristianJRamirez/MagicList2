@@ -1,5 +1,6 @@
 package a45858000w.magiclist2;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -45,6 +46,7 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
     private ArrayList<Carta> cartas;
     //private ArrayAdapter<Carta> adapter;
     private CartasCursorAdapter adapter;
+    private ProgressDialog dialog;
     //endregion
 
 
@@ -68,11 +70,10 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
         View view = binding.getRoot();
 
 
-
-
-
         adapter = new CartasCursorAdapter(getContext(), Carta.class);
 
+        dialog = new ProgressDialog(getContext());
+        dialog.setMessage("Cargando...");
 
         //TODO : commit -> Millores en el client
    //     https://github.com/lawer/RottenTomatoesClient2016/commit/2313ff67a86cff0db3febb18753bc79f8c178a08
@@ -124,7 +125,6 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
     @Override
     public void onStart() {
         super.onStart();
-        refresh();
     }
 
     private void refresh() {
@@ -157,6 +157,13 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
 
     private class RefreshDataTask extends AsyncTask<Void, Void,Void> {
         @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+                    dialog.show();
+        }
+
+        @Override
         protected Void doInBackground(Void... voids) {
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
             String color = preferences.getString("colors", "White");
@@ -183,6 +190,13 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
 
             return null;
         }
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+
+            dialog.dismiss();
+        }
+
     }
     //endregion
 
