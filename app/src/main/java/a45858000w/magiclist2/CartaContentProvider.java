@@ -1,5 +1,4 @@
 package a45858000w.magiclist2;
-import android.graphics.Movie;
 
 import nl.littlerobots.cupboard.tools.provider.CupboardContentProvider;
 
@@ -16,7 +15,7 @@ public class CartaContentProvider extends CupboardContentProvider {
     public static final String AUTHORITY = BuildConfig.APPLICATION_ID + ".provider";
 
     static {
-        cupboard().register(Movie.class);
+        cupboard().register(Carta.class);
     }
 
     public CartaContentProvider() {

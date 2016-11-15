@@ -6,7 +6,6 @@ package a45858000w.magiclist2;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
-import android.graphics.Movie;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,7 +37,7 @@ public class CartasCursorAdapter extends CupboardCursorAdapter<Carta> {
         CartasLayoutBinding binding = DataBindingUtil.getBinding(view);
 
         binding.Carta.setText(model.getName());
-        binding.power.setText(model.getPower());
+        binding.power.setText("Poder: " + model.getPower());
         binding.rarity.setText(model.getRarity());
         Glide.with(context).load(model.getImageUrl()).into(binding.Image);
     }

@@ -6,6 +6,7 @@ package a45858000w.magiclist2;
 
 import android.content.Context;
 import android.net.Uri;
+import android.support.v4.content.CursorLoader;
 
 import java.util.ArrayList;
 
@@ -27,6 +28,10 @@ public class DataManager {
     }
 
     static void deleteCartas(Context context) {
-            cupboard().withContext(context).delete(CARTA_URI, "_id > ?", "1");
-        }
+            cupboard().withContext(context).delete(CARTA_URI, "_id > ?", "0");
+    }
+
+    static CursorLoader getCursorLoader(Context context) {
+                return new CursorLoader(context, CARTA_URI, null, null, null, null);
+    }
 }

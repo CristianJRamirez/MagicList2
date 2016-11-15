@@ -2,6 +2,7 @@ package a45858000w.magiclist2;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -9,6 +10,8 @@ import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.Loader;
 import android.support.v4.widget.CursorAdapter;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -32,7 +35,7 @@ import static nl.qbusict.cupboard.CupboardFactory.cupboard;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class MainActivityFragment extends Fragment {
+public class MainActivityFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor>{
 
 
     //region VARIABLES
@@ -64,7 +67,7 @@ public class MainActivityFragment extends Fragment {
                         inflater, R.layout.fragment_main, container, false);
         View view = binding.getRoot();
 
-        cartas = new ArrayList<>();
+
 
 
 
@@ -86,6 +89,8 @@ public class MainActivityFragment extends Fragment {
             startActivity(intent);
         }
          });
+
+        getLoaderManager().initLoader(0, null, this);
 
         return view;
     }
@@ -133,6 +138,21 @@ public class MainActivityFragment extends Fragment {
            task.execute();
     }
 
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        return DataManager.getCursorLoader(getContext());
+    }
+
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+        adapter.swapCursor(data);
+    }
+
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+        adapter.swapCursor(null);
+    }
+
 
 
     private class RefreshDataTask extends AsyncTask<Void, Void,Void> {
@@ -158,7 +178,7 @@ public class MainActivityFragment extends Fragment {
             Log.d("DEBUG", result != null ? result.toString() : null);
 
 
-            DataManager.deleteCartas(getContext());
+//            DataManager.deleteCartas(getContext());
             DataManager.saveCartas(result, getContext());
 
             return null;
