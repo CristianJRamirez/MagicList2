@@ -54,6 +54,7 @@ public class Api {
         return getDatosCartas(url);
     }
 
+
     //Devuelve un arrayList de Cartas con el url
     @Nullable
     private static ArrayList<Carta> getDatosCartas(String url) {
