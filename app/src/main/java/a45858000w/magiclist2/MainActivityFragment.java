@@ -185,7 +185,7 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
             Log.d("DEBUG", result != null ? result.toString() : null);
 
 
-//            DataManager.deleteCartas(getContext());
+            DataManager.deleteCartas(getContext());
             DataManager.saveCartas(result, getContext());
 
             return null;
