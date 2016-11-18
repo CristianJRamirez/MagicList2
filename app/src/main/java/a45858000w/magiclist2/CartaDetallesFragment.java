@@ -40,7 +40,7 @@ public class CartaDetallesFragment extends Fragment {
 
 
 
-        FragmentCartaDetallesBinding
+
         binding = DataBindingUtil.inflate(
                         inflater, R.layout.fragment_carta_detalles, container, false);
         View view = binding.getRoot();
@@ -60,13 +60,11 @@ public class CartaDetallesFragment extends Fragment {
 
     private void updateUi(Carta carta) {
         Log.d("CARTA", carta.toString());
-
-
-
+        Log.d("------>",carta.getName());
 
         binding.cartaTitulo.setText(carta.getName());
         binding.cartaPower.setText(Html.fromHtml("<b>Poder :</b> " + carta.getPower() + "%"));
-        cartaMana.setText(Html.fromHtml("<b>Coste de Mana :</b> " + carta.getManaCost()));
+        binding.cartaMana.setText(Html.fromHtml("<b>Coste de Mana :</b> " + carta.getManaCost()));
         binding.cartaRarity.setText(Html.fromHtml("<b>Rareza :</b> " + carta.getRarity()));
         binding.cartaType.setText(Html.fromHtml("<b>Tipo :</b> " + carta.getType()));
         binding.cartaText.setText(Html.fromHtml("<b>Texto :</b> " + carta.getText()));
