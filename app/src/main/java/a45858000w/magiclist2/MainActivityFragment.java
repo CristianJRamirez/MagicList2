@@ -22,6 +22,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import com.alexvasilkov.events.Events;
+
+
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -83,13 +86,16 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
         binding.listaCartas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-            Carta carta = (Carta) adapterView.getItemAtPosition(i);
-             if (!esTablet()) {
-                 Intent intent = new Intent(getContext(), CartaDetalles.class);
-                 intent.putExtra("carta", carta);
-                 startActivity(intent);
-             }
-        }
+                    Carta carta = (Carta) adapterView.getItemAtPosition(i);
+                    if (!esTablet()) {
+                        Intent intent = new Intent(getContext(), CartaDetalles.class);
+                        intent.putExtra("carta", carta);
+                        startActivity(intent);
+                    } else {
+                        Events.create("carta-seleccionada").param(cartas).post();
+                    }
+
+                }
          });
 
         getLoaderManager().initLoader(0, null, this);

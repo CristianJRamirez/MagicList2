@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+import com.alexvasilkov.events.Events;
 import com.bumptech.glide.Glide;
 
 import a45858000w.magiclist2.databinding.FragmentCartaDetallesBinding;
@@ -32,6 +32,12 @@ public class CartaDetallesFragment extends Fragment {
     private FragmentCartaDetallesBinding binding;
 
     public CartaDetallesFragment() {
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Events.register(this);
     }
 
     @Override
@@ -57,6 +63,10 @@ public class CartaDetallesFragment extends Fragment {
 
     return view;
 }
+    @Events.Subscribe("carta-seleccionada")
+    private void onMovieSelected(Carta carta) {
+        updateUi(carta);
+    }
 
     private void updateUi(Carta carta) {
         Log.d("CARTA", carta.toString());
