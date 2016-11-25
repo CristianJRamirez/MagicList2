@@ -8,6 +8,7 @@ import android.util.Log;
 
 import com.alexvasilkov.events.Events;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -38,7 +39,10 @@ class RefreshDataTask extends AsyncTask<Void, Void,Void> {
 
         ArrayList<Carta> result = null;
         if (rareza.equalsIgnoreCase("Todas")) {
-            result = Api.getAllCartas();
+
+                result = Api.getAllCartas();
+
+
         } else {
             result = Api.getCartasRareza(rareza, color);
         }

@@ -21,14 +21,14 @@ public class Api {
     private final String API_KEY = "9htuhtcb4ymusd73d4z6jxcj";
 
 
-     static String getCartas(String pais) { //para utilizar el parametro
+    static String getCartas(String pais) { //para utilizar el parametro
 
         Uri builtUri = Uri.parse(BASE_URL)
                 .buildUpon()
                 //.appendPath("vi")
                 //.appendPath("cards")
                 //.appendPath("box_office.json")
-               // .appendQueryParameter("country", pais)//para buscar dentro de la api con algun paramentro en concreto
+                // .appendQueryParameter("country", pais)//para buscar dentro de la api con algun paramentro en concreto
                 //.appendQueryParameter("apikey", API_KEY)
                 .build();
         String url = builtUri.toString();
@@ -45,7 +45,7 @@ public class Api {
     }
 
 
-    static ArrayList<Carta> getAllCartas(){
+    static ArrayList<Carta> getAllCartas() {
         Uri builtUri = Uri.parse(BASE_URL)
                 .buildUpon()
                 .build();
@@ -60,13 +60,13 @@ public class Api {
     private static ArrayList<Carta> getDatosCartas(String url) {
         try {
             String JsonResponse = HttpUtils.get(url);
-            ArrayList<Carta> cartas =new ArrayList<>();
+            ArrayList<Carta> cartas = new ArrayList<>();
 
-            JSONObject data= new JSONObject(JsonResponse);
+            JSONObject data = new JSONObject(JsonResponse);
             JSONArray jsonCartas = data.getJSONArray("cards");
 
-            for (int i = 0; i<jsonCartas.length() ; i++) {
-                Carta c= new Carta();
+            for (int i = 0; i < jsonCartas.length(); i++) {
+                Carta c = new Carta();
                 JSONObject object = jsonCartas.getJSONObject(i);
 
                 if (object.has("name")) {
@@ -84,15 +84,13 @@ public class Api {
                 if (object.has("text")) {
                     c.setText(object.getString("text"));
                 }
-                if (object.has("power"))
-                {
+                if (object.has("power")) {
                     c.setPower(object.getString("power"));
                 }
                 if (object.has("imageUrl")) {
                     c.setImageUrl(object.getString("imageUrl"));
                 }
-                if (object.has("colors"))
-                {
+                if (object.has("colors")) {
                     c.setColor(object.getString("colors"));
                 }
 
@@ -110,7 +108,6 @@ public class Api {
     }
 
 
-
     public static ArrayList<Carta> getCartasRareza(String rareza, String color) {
 
 
@@ -126,9 +123,9 @@ public class Api {
         String url = builtUri.toString();
         return getDatosCartas(url); //return null;
     }
-
-
-
-
-
 }
+
+
+
+
+
