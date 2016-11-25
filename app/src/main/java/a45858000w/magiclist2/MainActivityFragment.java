@@ -104,12 +104,12 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
     }
 
     @Events.Subscribe("start-downloading-data")
-    void preRefresh() {
+    public void preRefresh() {
             dialog.show();
         }
 
     @Events.Subscribe("finish-downloading-data")
-    void afterRefresh() {
+    public void afterRefresh() {
             dialog.dismiss();
         }
 
