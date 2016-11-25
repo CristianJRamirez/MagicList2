@@ -145,8 +145,9 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
            String result = api.getAllCartas();
            Log.d("DEBUG", result);
            */
-           RefreshDataTask task = new RefreshDataTask();
-           task.execute();
+           //RefreshDataTask task = new RefreshDataTask();
+        RefreshDataTask task = new RefreshDataTask(getActivity().getApplicationContext());
+        task.execute();
     }
 
     @Override
@@ -166,49 +167,7 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
 
 
 
-    private class RefreshDataTask extends AsyncTask<Void, Void,Void> {
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
 
-                    dialog.show();
-        }
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-            String color = preferences.getString("colors", "White");
-            String rareza = preferences.getString("rarity", "Todas");
-
-
-            ArrayList<Carta> result = null;
-            if (rareza.equalsIgnoreCase("Todas")) {
-                result = Api.getAllCartas();
-            } else {
-                result = Api.getCartasRareza(rareza, color);
-            }
-/*TODO acabar de implementar el metodo de colores, que se hara con : MultiSelectListPreference, mirarme como hacerlo y rellenar los archivos :
-            res/xml/pref_general.xml
-            mirar informacion en  : https://developer.android.com/reference/android/preference/MultiSelectListPreference.html*/
-
-
-            //Log.d("DEBUG", result.toString());
-            Log.d("DEBUG", result != null ? result.toString() : null);
-
-
-            DataManager.deleteCartas(getContext());
-            DataManager.saveCartas(result, getContext());
-
-            return null;
-        }
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-
-            dialog.dismiss();
-        }
-
-    }
     //endregion
 
 }
