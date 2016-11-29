@@ -10,8 +10,8 @@
     tools:showIn="@layout/activity_main">
 
     <ListView
-            android:layout_width="352dp"
-            android:layout_height="423dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:id="@+id/listaCartas"
             android:layout_marginStart="16dp"
             app:layout_constraintLeft_toLeftOf="parent"

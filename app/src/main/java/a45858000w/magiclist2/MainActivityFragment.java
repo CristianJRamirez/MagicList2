@@ -92,7 +92,7 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
                         intent.putExtra("carta", carta);
                         startActivity(intent);
                     } else {
-                        Events.create("carta-seleccionada").param(cartas).post();
+                        Events.create("carta-seleccionada").param(carta).post();
                     }
 
                 }
